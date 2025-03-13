@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,6 +58,44 @@ namespace BlockchainAssignment
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String privateKey;
+            Wallet.Wallet myNewWallet = new Wallet.Wallet(out string privKey);
+            publicBox.Text = myNewWallet.publicID;
+            privateBox.Text = privKey;
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (Wallet.Wallet.ValidatePrivateKey(publicBox.Text, privateBox.Text))
+                UpdateText("Keys are valid");
+            else
+                UpdateText("Keys are invalid");
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
