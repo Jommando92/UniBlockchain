@@ -12,9 +12,8 @@ namespace BlockchainAssignment
         /* Transaction Variables */
 
         DateTime timestamp; 			// Time of creation
-        public String senderAddress, recipientAddress; 		// Participants public key addresses
+        public String senderAddress, recipientAddress, hash, signature;// Participants public key addresses
         public double amount, fee; 		// Quantities transferred
-        public String hash, signature; 		// Attributes for verification of validity
 
 
 
@@ -28,7 +27,7 @@ namespace BlockchainAssignment
             this.amount = amount;
             this.fee = fee;
             this.hash = CreateHash();						// Hash the transaction attributes
-            this.signature = Wallet.Wallet.CreateSignature(from, privateKey, hash); 		// Sign the hash with the senders private key ensuring validity
+            this.signature = Wallet.Wallet.CreateSignature(senderAddress, privateKey, hash); 		// Sign the hash with the senders private key ensuring validity
         }
 
 

@@ -84,9 +84,13 @@ namespace BlockchainAssignment
         private void button3_Click(object sender, EventArgs e)
         {
             if (Wallet.Wallet.ValidatePrivateKey(publicBox.Text, privateBox.Text))
+            {
                 UpdateText("Keys are valid");
+            }
             else
+            {
                 UpdateText("Keys are invalid");
+            }
 
         }
 
