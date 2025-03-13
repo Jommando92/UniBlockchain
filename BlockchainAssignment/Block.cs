@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlockchainAssignment
+{
+    class Block
+    {
+        private DateTime timestamp; 		// Time of creation
+        private int index;
+        public String prevHash, hash;		// A reference pointer to the previous block
+
+        public Block(Block lastBlock)
+        {
+
+        }
+
+        public String CreateHash()						// Hashes the entire Block object
+        {
+            String hash = String.Empty;
+            SHA256 hasher = SHA256Managed.Create();
+
+
+            String input = timestamp.ToString() + index + prevHash;	// Concatenate all of the blocks properties including nonce as to generate a new hash on each call
+            Byte[] hashByte = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));	// Apply the SHA hash function to the block as represented by the string "input"
+
+            foreach (byte x in hashByte)
+                hash += String.Format("{0:x2}", x);                 // Reformat to a string
+
+            return hash;
+        }
+        public override string ToString()						// Concatenate all properties to output to the UI
+        {
+            return "[BLOCK START]"
+                + "\nIndex: " + index
+                + "\tTimestamp: " + timestamp
+                + "\nPrevious Hash: " + prevHash
+                + "\nHash: " + hash
+                + "\n[BLOCK END]";
+
+        }
+    }
+}
+
