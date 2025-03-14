@@ -11,9 +11,13 @@ namespace BlockchainAssignment
         public List<Block> blocks;
         public Blockchain()
         {
-            this.blocks = new List<Block>();
-            Block genesisBlock = new Block(null); // Create the genesis block with no previous block
-            this.blocks.Add(genesisBlock);
+            this.blocks = new List<Block>()
+            {
+                new Block()
+            };
+            //Block genesisBlock = new Block(null); // Create the genesis block with no previous block
+            //this.blocks.Add(genesisBlock);
+
         }
         public String GetBlockAsString(int index)		// Prints the block at the specified index to the UI
         {

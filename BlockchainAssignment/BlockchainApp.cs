@@ -29,61 +29,45 @@ namespace BlockchainAssignment
         // Update the text in the textbox
         private void UpdateText(String text)
         {
-            richTextBox1.Text = text;
+            mainTextBox1.Text = text;
         }
 
         // Print Block N (based on user input)
-
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void printBotton_Click(object sender, EventArgs e)
         {
-            if (Int32.TryParse(textBox1.Text, out int index))
+            if (Int32.TryParse(inputBox.Text, out int index))
                 UpdateText(blockchain.GetBlockAsString(index));
             else
                 UpdateText("Invalid Block No.");
         }
 
-        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
+        private void mainTextBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void inputBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void genWallet_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            String privateKey;
             Wallet.Wallet myNewWallet = new Wallet.Wallet(out string privKey);
             publicBox.Text = myNewWallet.publicID;
             privateBox.Text = privKey;
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void validateKey_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (Wallet.Wallet.ValidatePrivateKey(publicBox.Text, privateBox.Text))
+            if (Wallet.Wallet.ValidatePrivateKey(privateBox.Text, publicBox.Text))
             {
                 UpdateText("Keys are valid");
             }
@@ -94,12 +78,22 @@ namespace BlockchainAssignment
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void publicBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void privateBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
