@@ -21,14 +21,6 @@ namespace BlockchainAssignment
             this.prevHash = String.Empty;
             this.hash = CreateHash();
         }
-        //public Block(Block prevBlock)
-        //{
-        //    //this.index = prevBlock.index;
-        //    this.timestamp = DateTime.Now;
-        //    this.index = prevBlock.index + 1;
-        //    this.prevHash = prevBlock.hash;
-        //    this.hash = CreateHash();
-        //}
         public Block(int index, String hash)
         {
             this.index = index + 1;
