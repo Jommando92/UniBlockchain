@@ -9,6 +9,9 @@ namespace BlockchainAssignment
     internal class Blockchain
     {
         public List<Block> blocks;
+        private int transactionsPerBlock = 5;				// Maximum number of transactions per block
+        public List<Transaction> transactionPool = new List<Transaction>();	// List of pending transactions to be mined
+
         public Blockchain()
         {
             this.blocks = new List<Block>()
@@ -26,6 +29,20 @@ namespace BlockchainAssignment
                 return blocks[index].ToString(); 		// Return block as a string
             return "No such block exists";
         }
+
+        public Block GetLastBlock()	        		// Retrieves the most recently appended block in the blockchain
+        {
+            return blocks[blocks.Count - 1];
+        }
+        public List<Transaction> GetPendingTransactions()			// Retrieve pending transactions and remove from pool
+        {
+            int n = Math.Min(transactionsPerBlock, transactionPool.Count);	// Determine the number of transactions to retrieve dependent on the number of pending transactions and the limit specified
+            List<Transaction> transactions = transactionPool.GetRange(0, n);	// "Pull" transactions from the transaction list (modifying the original list)
+            transactionPool.RemoveRange(0, n);
+            return transactions;						// Return the extracted transactions
+        }
+
+
 
         public override string ToString()				// Output all blocks of the blockchain as a string
         {

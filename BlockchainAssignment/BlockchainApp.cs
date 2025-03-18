@@ -15,9 +15,6 @@ namespace BlockchainAssignment
     {
         // Create a new instance of the Blockchain class
         private Blockchain blockchain;
-
-
-
         // Constructor
         public BlockchainApp()
         {
@@ -25,14 +22,15 @@ namespace BlockchainAssignment
             this.blockchain = new Blockchain();
             UpdateText("New Blockchain Instance Created");
         }
-
         // Update the text in the textbox
         private void UpdateText(String text)
         {
             mainTextBox1.Text = text;
         }
-
-        // Print Block N (based on user input)
+        private void ReadAll_Click(object sender, EventArgs e)
+        {
+            UpdateText(blockchain.ToString());
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -44,17 +42,6 @@ namespace BlockchainAssignment
                 UpdateText(blockchain.GetBlockAsString(index));
             else
                 UpdateText("Invalid Block No.");
-        }
-
-        private void mainTextBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void inputBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void genWallet_Click(object sender, EventArgs e)
@@ -78,6 +65,33 @@ namespace BlockchainAssignment
 
         }
 
+        private void createTransation_Click(object sender, EventArgs e)
+        {
+            Transaction transaction = new Transaction(publicBox.Text, keyReceiver.Text, Double.Parse(amountBox.Text), Double.Parse(feeBox.Text), privateBox.Text);
+            blockchain.transactionPool.Add(transaction);
+            UpdateText(transaction.ToString());
+        }
+
+        private void pendingTransaction_Click(object sender, EventArgs e)
+        {
+            UpdateText(String.Join("\n", blockchain.transactionPool));
+        }
+
+        private void GenNewBlock_Click(object sender, EventArgs e)
+        {
+            // Retrieve pending transactions to be added to the newly generated Block
+            List<Transaction> transactions = blockchain.GetPendingTransactions();
+            // Create and append the new block - requires a reference to the previous block, a set of transactions and the miners public address (For the reward to be issued)
+            Block newBlock = new Block(blockchain.GetLastBlock(), transactions, publicBox.Text);
+            blockchain.blocks.Add(newBlock);
+
+            UpdateText(newBlock.ToString());
+        }
+
+        private void ReadAll_Click_1(object sender, EventArgs e)
+        {
+            UpdateText(blockchain.ToString());
+        }
         private void publicBox_TextChanged(object sender, EventArgs e)
         {
 
@@ -88,12 +102,25 @@ namespace BlockchainAssignment
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void publicKeyLab_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void privateKeyLab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void amountBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void mainTextBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+        private void inputBox_TextChanged(object sender, EventArgs e)
         {
 
         }
