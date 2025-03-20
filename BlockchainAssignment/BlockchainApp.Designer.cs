@@ -135,7 +135,7 @@
             // 
             // createTransation
             // 
-            this.createTransation.Location = new System.Drawing.Point(13, 504);
+            this.createTransation.Location = new System.Drawing.Point(13, 440);
             this.createTransation.Name = "createTransation";
             this.createTransation.Size = new System.Drawing.Size(75, 39);
             this.createTransation.TabIndex = 9;
@@ -145,7 +145,7 @@
             // 
             // amountBox
             // 
-            this.amountBox.Location = new System.Drawing.Point(95, 549);
+            this.amountBox.Location = new System.Drawing.Point(98, 443);
             this.amountBox.Name = "amountBox";
             this.amountBox.Size = new System.Drawing.Size(59, 20);
             this.amountBox.TabIndex = 10;
@@ -153,7 +153,7 @@
             // 
             // feeBox
             // 
-            this.feeBox.Location = new System.Drawing.Point(95, 576);
+            this.feeBox.Location = new System.Drawing.Point(98, 470);
             this.feeBox.Name = "feeBox";
             this.feeBox.Size = new System.Drawing.Size(59, 20);
             this.feeBox.TabIndex = 11;
@@ -161,7 +161,7 @@
             // AmountLabel
             // 
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Location = new System.Drawing.Point(16, 556);
+            this.AmountLabel.Location = new System.Drawing.Point(175, 446);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(43, 13);
             this.AmountLabel.TabIndex = 12;
@@ -170,7 +170,7 @@
             // FeeLabel
             // 
             this.FeeLabel.AutoSize = true;
-            this.FeeLabel.Location = new System.Drawing.Point(16, 582);
+            this.FeeLabel.Location = new System.Drawing.Point(175, 472);
             this.FeeLabel.Name = "FeeLabel";
             this.FeeLabel.Size = new System.Drawing.Size(25, 13);
             this.FeeLabel.TabIndex = 13;
@@ -178,7 +178,7 @@
             // 
             // keyReceiver
             // 
-            this.keyReceiver.Location = new System.Drawing.Point(264, 556);
+            this.keyReceiver.Location = new System.Drawing.Point(267, 450);
             this.keyReceiver.Name = "keyReceiver";
             this.keyReceiver.Size = new System.Drawing.Size(562, 20);
             this.keyReceiver.TabIndex = 14;
@@ -186,7 +186,7 @@
             // newKeylabel
             // 
             this.newKeylabel.AutoSize = true;
-            this.newKeylabel.Location = new System.Drawing.Point(162, 563);
+            this.newKeylabel.Location = new System.Drawing.Point(832, 453);
             this.newKeylabel.Name = "newKeylabel";
             this.newKeylabel.Size = new System.Drawing.Size(96, 13);
             this.newKeylabel.TabIndex = 15;
@@ -227,7 +227,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(937, 660);
+            this.ClientSize = new System.Drawing.Size(937, 512);
             this.Controls.Add(this.ReadAll);
             this.Controls.Add(this.pendingTransaction);
             this.Controls.Add(this.GenNewBlock);

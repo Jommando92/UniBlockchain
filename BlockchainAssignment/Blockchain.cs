@@ -16,10 +16,7 @@ namespace BlockchainAssignment
         {
             this.blocks = new List<Block>()
             {
-
                 new Block()
-
-
             };
 
         }
@@ -42,14 +39,9 @@ namespace BlockchainAssignment
             return transactions;						// Return the extracted transactions
         }
 
-
-
         public override string ToString()				// Output all blocks of the blockchain as a string
         {
             return String.Join("\n", blocks);
         }
-
-
     }
-
 }
