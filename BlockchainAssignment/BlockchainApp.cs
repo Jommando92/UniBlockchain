@@ -62,9 +62,10 @@ namespace BlockchainAssignment
 
         private void createTransation_Click(object sender, EventArgs e)
         {
-            Transaction transaction = new Transaction(publicBox.Text, keyReceiver.Text, Double.Parse(amountBox.Text), Double.Parse(feeBox.Text), privateBox.Text);
-            blockchain.transactionPool.Add(transaction);
-            UpdateText(transaction.ToString());
+            Transaction transaction = new Transaction(publicBox.Text, keyReceiver.Text, Double.Parse(amountBox.Text), Double.Parse(feeBox.Text), privateBox.Text); // Create a new transaction
+            blockchain.transactionPool.Add(transaction); // Add the transaction to the transaction pool
+            UpdateText(transaction.ToString()); // Output the transaction to the UI
+
         }
 
         private void pendingTransaction_Click(object sender, EventArgs e)
@@ -117,6 +118,11 @@ namespace BlockchainAssignment
         private void inputBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBalance_Click(object sender, EventArgs e)
+        {
+            UpdateText(blockchain.GetBalance(publicBox.Text).ToString() + " Assignment Coin");
         }
     }
 }

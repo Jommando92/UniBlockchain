@@ -43,5 +43,28 @@ namespace BlockchainAssignment
         {
             return String.Join("\n", blocks);
         }
+        // Check the balance associated with a wallet based on the public key
+        public double GetBalance(String address)
+        {
+            // Accumulator value
+            double balance = 0;
+
+            // Loop through all approved transactions in order to assess account balance
+            foreach (Block b in blocks)
+            {
+                foreach (Transaction t in b.transactionList)
+                {
+                    if (t.recipientAddress.Equals(address))
+                    {
+                        balance += t.amount; // Credit funds recieved
+                    }
+                    if (t.senderAddress.Equals(address))
+                    {
+                        balance -= (t.amount + t.fee); // Debit payments placed
+                    }
+                }
+            }
+            return balance;
+        }
     }
 }

@@ -54,12 +54,15 @@ namespace BlockchainAssignment
                 + "\n  -- Verification --"
                 + "\n  Hash: " + hash
                 + "\n  Signature: " + signature
+                + "\n"
                 + "\n  -- Quantities --"
                 + "\n  Transferred: " + amount + " Assignment Coin"
                 + "\t  Fee: " + fee
+                + "\n"
                 + "\n  -- Participants --"
                 + "\n  Sender: " + senderAddress
                 + "\n  Reciever: " + recipientAddress
+                + "\n"
                 + "\n  [TRANSACTION END]";
         }
     }

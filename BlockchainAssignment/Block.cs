@@ -81,8 +81,8 @@ namespace BlockchainAssignment
 
         public Transaction createRewardTransaction(List<Transaction> transactions)
         {
-            double fees = transactions.Aggregate(0.0,(Acc,t) => Acc + t.fee);
-            return new Transaction("Mine Reward", minerAddress, (reward + fees), 0, "");
+            double fees = transactions.Aggregate(0.0,(amount,t) => amount + t.fee); // Calculate the total fees from the transactions
+            return new Transaction("Mine Reward", minerAddress, (reward + fees), 0, ""); // Create a new transaction with the total reward
 
         }
 
@@ -93,18 +93,21 @@ namespace BlockchainAssignment
                 + "\nIndex: " + index
                 + "\tTimestamp: " + timestamp
                 + "\nPrevious Hash: " + prevHash
+                + "\n"
                 + "\n-- PoW --"
                 + "\nDifficulty Level: " + difficulty
                 + "\nNonce: " + nonce
                 + "\nHash: " + hash
+                + "\n"
                 + "\n-- Rewards --"
                 + "\nReward: " + reward
                 + "\nMiners Address: " + minerAddress
+                + "\n"
                 + "\n-- " + transactionList.Count + " Transactions --"
                 + "\nMerkle Root: " + merkleRoot
                 + "\n" + String.Join("\n", transactionList)
+                + "\n"
                 + "\n[BLOCK END]";
-
         }
     }
 }
