@@ -18,7 +18,6 @@ namespace BlockchainAssignment
         //proof of work
         public long nonce;        // Number use once for proof of work
         public double reward; //simple fixed reward for mining a block
-
         public String prevHash, hash, merkleRoot, minerAddress;		// A reference pointer to the previous block
         public Block()
         {
@@ -50,7 +49,7 @@ namespace BlockchainAssignment
             this.prevHash = lastBlock.hash;
             this.minerAddress = minerAddress; 			// The wallet to be credited the reward for the mining effort
             this.reward = 1.0; 					// Assign a simple fixed value reward
-            //transactions.Add(createRewardTransaction(transactions)); 	// Create and append the reward transaction
+            transactions.Add(createRewardTransaction(transactions)); 	// Create and append the reward transaction
             this.transactionList = new List<Transaction>(transactions); 	// Assign provided transactions to the block
             //this.merkleRoot = MerkleRoot(transactionList); 		// Calculate the merkle root of the blocks transactions
             this.hash = Mine(); 					// Conduct PoW to create a hash which meets the given difficulty requirement
@@ -79,6 +78,14 @@ namespace BlockchainAssignment
             }
             return hash;            // Return the hash meeting the difficulty requirement
         }
+
+        public Transaction createRewardTransaction(List<Transaction> transactions)
+        {
+            double fees = transactions.Aggregate(0.0,(Acc,t) => Acc + t.fee);
+            return new Transaction("Mine Reward", minerAddress, (reward + fees), 0, "");
+
+        }
+
         public override string ToString()						// Concatenate all properties to output to the UI
         {
             return 

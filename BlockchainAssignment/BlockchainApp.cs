@@ -78,7 +78,6 @@ namespace BlockchainAssignment
             List<Transaction> transactions = blockchain.GetPendingTransactions();
             // Create and append the new block - requires a reference to the previous block, a set of transactions and the miners public address (For the reward to be issued)
             Block newBlock = new Block(blockchain.GetLastBlock(), transactions, publicBox.Text);
-
             blockchain.blocks.Add(newBlock);
             UpdateText(newBlock.ToString());
         }
